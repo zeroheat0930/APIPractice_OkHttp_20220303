@@ -3,7 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/JEONGDONGJUN/Desktop/APIPractice_OkHttp_20220303/app/src/main/res/layout/activity_sign_up.xml" value="0.1" />
+        <entry key="..\:/Users/JEONGDONGJUN/Desktop/APIPractice_OkHttp_20220303/app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="..\:/Users/JEONGDONGJUN/Desktop/APIPractice_OkHttp_20220303/app/src/main/res/layout/activity_sign_up.xml" value="0.5" />
       </map>
     </option>
   </component>
