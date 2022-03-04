@@ -33,11 +33,28 @@ class MainActivity : AppCompatActivity() {
             ServerUtil.postRequestLogin(inputId, inputPw, object : ServerUtil.JsonResponseHandler{
                 override fun onResponse(jsonObj: JSONObject) {
 //                    화면의 입장에서, 로그인 결과를 받아서 처리할 코드.
+//                    서버에 다녀오고 실행 : 라이브러리가 자동으로 백그라운드에서 돌도록 만든 코드
+
                 val code = jsonObj.getInt("code")
                     if(code == 200) {
 
+                        runOnUiThread {
+
+//                            토스트를 띄우는 코드만, UI 전담 쓰레드에서 실행하도록하는 기능.(runOnUiThread)
+                            Toast.makeText(this@MainActivity,"로그인 성공",Toast.LENGTH_SHORT).show()
+                        }
+
                     } else{
-                        Toast.makeText(this@MainActivity,"로그인 실패",Toast.LENGTH_SHORT).show()
+
+//                        토스트 : UI 조작. => 백그라운드에서 UI를 건드리면, 위험한동작으로 간주하고 앱을 강제종료
+
+                        runOnUiThread {
+
+//                            토스트를 띄우는 코드만, UI 전담 쓰레드에서 실행하도록하는 기능.(runOnUiThread)
+                            Toast.makeText(this@MainActivity,"로그인 실패",Toast.LENGTH_SHORT).show()
+                        }
+
+
                     }
                 }
 
