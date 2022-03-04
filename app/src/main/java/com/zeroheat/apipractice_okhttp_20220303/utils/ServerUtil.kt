@@ -35,13 +35,11 @@ class ServerUtil {
        private val BASE_URL = "http://54.180.52.26"
 
 
-//        handler : 이 함수를 쓰는 화면에서, JSON 분석을 어떻게 / UI에서 어떻게 활용할지 방안. (인터페이스)
-//         - 처리방안을 임시로 비워두려면, null 대입 허용.
-
-
 
 //        로그인 기능 호출 함수
-fun postRequestLogin( id: String, pw: String, handler: JsonResponseHandler? ) {
+//        handler : 이 함수를 쓰는 화면에서, JSON 분석을 어떻게 / UI에서 어떻게 활용할지 방안. (인터페이스)
+//         - 처리방안을 임시로 비워두려면, null 대입 허용.
+        fun postRequestLogin( id: String, pw: String, handler: JsonResponseHandler? ) {
 
 //            Request 제작 -> 실제 호출 -> 서버의 응답을, 화면에 전달
 
@@ -112,6 +110,23 @@ fun postRequestLogin( id: String, pw: String, handler: JsonResponseHandler? ) {
 
 
         }
+
+
+        fun putRequestSignUp(email:String, pw: String, nickname:String, handler: JsonResponseHandler?){
+            val urlString = "${BASE_URL}/user"
+
+            val formData = FormBody.Builder()
+                .add("email",email)
+                .add("password",pw)
+                .add("nick_name",nickname)
+                .build()
+
+            val request = Request.Builder()
+                .url(urlString)
+                .put(formData)
+                .build()
+        }
+
     }
 
 
