@@ -1,6 +1,8 @@
 package com.zeroheat.apipractice_okhttp_20220303.utils
 
+import android.util.Log
 import okhttp3.*
+import org.json.JSONObject
 import java.io.IOException
 
 class ServerUtil {
@@ -50,9 +52,28 @@ class ServerUtil {
             client.newCall(request).enqueue(object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
 
+//                    실패 : 서버 연결 자체를 실패. 응답이 오지 않았다.
+//                    ex. 인터넷 끊김, 서버 접속 불가 등등 물리적 연결 실패
+//                    ex. 비번 틀려서 로그인 실패: 서버 연결 성공, 응답도 돌아왔는데 > 그 내용만 실패. (물리적실패X)
+
                 }
 
                 override fun onResponse(call: Call, response: Response) {
+
+//                    어떤 내용이던, 응답 자체는 잘 돌아온 경우. (그 내용은 성공/실패 일 수 있다.)
+//
+//                    응답 : response 변수 > 응답의 본문 (body)만 보자.
+
+                    val bodyString = response.body!!.string() // toString()아님!, string() 기능은 1회용. 변수에 담아두고 있음
+
+//                    응답의 본문을 String으로 변환하면, JSON Encoding 적용된 상태.(한글깨짐)
+//                    JSONObject 객체로 응답본문String을 변환해주면, 한글이 복구됨
+//                      => UI에서도 JSONObject를 이용해서, 데이터 추출/ 실제 활용
+
+
+                    val jsonObj = JSONObject(bodyString)
+                    Log.d("서버테스트", jsonObj.toString())
+
 
                 }
 
