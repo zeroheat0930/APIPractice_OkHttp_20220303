@@ -2,6 +2,7 @@ package com.zeroheat.apipractice_okhttp_20220303
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.zeroheat.apipractice_okhttp_20220303.databinding.ActivityLoginBinding
@@ -22,6 +23,13 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun setupEvents(){
+
+//        체크박스의 체크 여부가 변경되면 (이벤트 처리) > ContextUtill이용, 체크값 저장
+        binding.autoLoginCheckBox.setOnCheckedChangeListener{compoundButton, isChecked ->
+
+            Log.d("체크값변경", "${isChecked}로 변경됨")
+        }
+
 
 
         binding.btnSIgnUp.setOnClickListener {
