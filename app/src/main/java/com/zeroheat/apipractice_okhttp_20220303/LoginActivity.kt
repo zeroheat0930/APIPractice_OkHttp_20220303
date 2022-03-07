@@ -58,7 +58,12 @@ class LoginActivity : BaseActivity() {
                             Toast.makeText(mContext, "${nickname}님, 환영합니다!", Toast.LENGTH_SHORT).show()
                         }
 
-                    } else{
+//                        메인 화면 진입
+
+
+
+
+                   } else{
 
                         val message = jsonObj.getString("message")
 
