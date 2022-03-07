@@ -2,6 +2,7 @@ package com.zeroheat.apipractice_okhttp_20220303.utils
 
 import android.util.Log
 import okhttp3.*
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import org.json.JSONObject
 import java.io.IOException
 
@@ -13,16 +14,6 @@ class ServerUtil {
     interface JsonResponseHandler {
         fun onResponse( jsonObj: JSONObject )
     }
-
-
-
-
-
-
-
-
-
-
 
 //    서버에 Request를 날리는 역할.
 //    함수를 만들려고 하는데, 어떤 객체가 실행해도 결과만 잘 나오면 그만인 함수
@@ -142,6 +133,31 @@ class ServerUtil {
                 }
             })
         }
+
+        //        이메일 or 닉네임 중복 검사 함수
+
+        fun getRequestDuplicatedCheck( type: String, inputValue: String, handler: JsonResponseHandler? ) {
+
+//            1) 어느 주소로 가야하는가? + 어떤 파라미터를 첨부하는가? 도 주소에 같이 포함.
+//              => 라이브러리의 도움을 받자.  HttpUrl 클래스 (OkHttp 소속)
+
+            val urlBuilder = "${BASE_URL}/user_check".toHttpUrlOrNull()!!.newBuilder()
+                .addEncodedQueryParameter("type", type)
+                .addEncodedQueryParameter("value", inputValue)
+                .build()
+
+            val urlString = urlBuilder.toString()
+
+            Log.d("완성된 URL", urlString)
+
+        }
+
+
+
+
+
+
+
 
     }
 
