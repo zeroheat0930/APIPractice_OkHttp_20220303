@@ -20,7 +20,12 @@ abstract class BaseActivity : AppCompatActivity() {
 //    실제 함수를 구현해서 물려줘봐야, 오버라이딩 해서 사용한다.
 //    => 추상 메쏘드로 물려줘서, 반드시 오버라이딩하게 만들자.
 
-    abstract fun setupEvents()
+    abstract fun setupEvents(
+
+
+
+
+    )
     abstract fun setValues()
 
 }
