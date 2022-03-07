@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.zeroheat.apipractice_okhttp_20220303.databinding.ActivityLoginBinding
+import com.zeroheat.apipractice_okhttp_20220303.utils.ContextUtill
 import com.zeroheat.apipractice_okhttp_20220303.utils.ServerUtil
 import org.json.JSONObject
 
@@ -58,16 +59,14 @@ class LoginActivity : BaseActivity() {
                             Toast.makeText(mContext, "${nickname}님, 환영합니다!", Toast.LENGTH_SHORT).show()
                         }
 
-                        //                        서버가 내려준 토큰값을 변수에 담아보자.
+//                        서버가 내려준 토큰값을 변수에 담아보자.
                         val token = dataObj.getString("token")
+
+                        ContextUtill.setToken(mContext, token)
+
 
 //                        변수에 담긴 토큰값(String) 을 SharedPreferences에 담아두자.
 //                        로그인 성공시에는 담기만, 필요한 화면/클래스에서 꺼내서 사용.
-
-
-
-
-
 
 
 //                        메인 화면 진입 => 클래스의 객체화 (UI 동작 X)
