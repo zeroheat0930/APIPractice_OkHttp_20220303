@@ -1,5 +1,6 @@
 package com.zeroheat.apipractice_okhttp_20220303.utils
 
+import android.content.Context
 import android.util.Log
 import okhttp3.*
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
@@ -134,7 +135,7 @@ class ServerUtil {
             })
         }
 
-        //        이메일 or 닉네임 중복 검사 함수
+//        이메일 or 닉네임 중복 검사 함수
 
         fun getRequestDuplicatedCheck( type: String, inputValue: String, handler: JsonResponseHandler? ) {
 
@@ -176,7 +177,17 @@ class ServerUtil {
         }
 
 
+//        연습 : 내 정보 불러오기 (/user_info - GET)
 
+//        토큰은, ContextUtil 클래스에서 getToken 함수로 꺼내올 수 있다.
+//        토큰값 자체는 파라미터로 받아올 필요 없다. => ContextUtil을 불러다 사용하자.
+//        메모장에 접근할 수 있게, Context 변수 하나를 미리 받아주자.
+
+        fun getRequestMyInfo( context: Context, handler: JsonResponseHandler? ){
+
+
+
+        }
 
 
 

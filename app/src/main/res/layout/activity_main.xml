@@ -9,6 +9,13 @@
         android:padding="20dp"
         tools:context=".MainActivity">
 
+        <TextView
+            android:id="@+id/txtLoginUserNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="연습 : 로그인한 사람 닉네임"/>
+
+
     </LinearLayout>
 
 
