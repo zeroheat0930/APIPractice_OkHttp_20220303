@@ -23,6 +23,17 @@ class SignUpActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+        //        닉네임 검사 버튼 기능.
+
+
+
+
+
+
+
+
+
+
         binding.edtEmail.addTextChangedListener {
 
 //            내용이 한글자라도 바뀌면, 무조건 재검사 요구 문장.
