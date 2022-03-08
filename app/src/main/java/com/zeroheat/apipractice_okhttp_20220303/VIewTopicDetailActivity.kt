@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
+import com.zeroheat.apipractice_okhttp_20220303.adapters.ReplyAdapter
 import com.zeroheat.apipractice_okhttp_20220303.databinding.ActivityViewTopicDetailBinding
 import com.zeroheat.apipractice_okhttp_20220303.datas.ReplyData
 import com.zeroheat.apipractice_okhttp_20220303.datas.TopicData
@@ -19,6 +20,9 @@ class VIewTopicDetailActivity : BaseActivity() {
     lateinit var mTopicData : TopicData
 
     val mReplyList = ArrayList<ReplyData>()
+
+    lateinit var mAdapter: ReplyAdapter
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,6 +80,9 @@ class VIewTopicDetailActivity : BaseActivity() {
     }
 
     override fun setValues() {
+
+        mAdapter = ReplyAdapter(mContext, R.layout.reply_list_item, mReplyList)
+        binding.replyListView.adapter = mAdapter
 
         setTopicDataToUi()
         getTopicDetailFromServer()
@@ -157,7 +164,9 @@ class VIewTopicDetailActivity : BaseActivity() {
                 }
 
 //                서버의 동작이므로, 어댑터 세팅보다 늦게 끝날수 있다. (notifyDataSetChanged)
-
+                runOnUiThread {
+                    mAdapter.notifyDataSetChanged()
+                }
 
 
 
