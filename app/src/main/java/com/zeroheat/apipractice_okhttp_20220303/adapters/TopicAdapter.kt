@@ -39,6 +39,8 @@ class TopicAdapter  (
 
         Glide.with(mContext).load(data.imageURL).into(imgTopicBackground)
 
+        txtReplyCount.text = "${data.replyCount}명 참여중!"
+
         return row
 
     }
