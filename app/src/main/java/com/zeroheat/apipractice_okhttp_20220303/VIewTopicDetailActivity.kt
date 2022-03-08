@@ -3,6 +3,7 @@ package com.zeroheat.apipractice_okhttp_20220303
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.bumptech.glide.Glide
 import com.zeroheat.apipractice_okhttp_20220303.databinding.ActivityViewTopicDetailBinding
 import com.zeroheat.apipractice_okhttp_20220303.datas.TopicData
 
@@ -25,6 +26,8 @@ class VIewTopicDetailActivity : BaseActivity() {
     }
 
     override fun setValues() {
+        binding.txtTitle.text = mTopicData.title
+        Glide.with(mContext).load(mTopicData.imageURL).into(binding.imgTopicBackground)
 
     }
 }
