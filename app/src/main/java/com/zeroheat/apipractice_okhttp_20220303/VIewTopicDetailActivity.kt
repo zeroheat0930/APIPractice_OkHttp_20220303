@@ -6,6 +6,8 @@ import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.zeroheat.apipractice_okhttp_20220303.databinding.ActivityViewTopicDetailBinding
 import com.zeroheat.apipractice_okhttp_20220303.datas.TopicData
+import com.zeroheat.apipractice_okhttp_20220303.utils.ServerUtil
+import org.json.JSONObject
 
 class VIewTopicDetailActivity : BaseActivity() {
 
@@ -29,5 +31,21 @@ class VIewTopicDetailActivity : BaseActivity() {
         binding.txtTitle.text = mTopicData.title
         Glide.with(mContext).load(mTopicData.imageURL).into(binding.imgTopicBackground)
 
+        getTopicDetailFromServer()
     }
+
+    fun getTopicDetailFromServer() {
+
+        ServerUtil.getRequestTopicDetail(mContext, mTopicData.id, object : ServerUtil.JsonResponseHandler {
+            override fun onResponse(jsonObj: JSONObject) {
+
+
+
+            }
+
+        })
+
+    }
+
 }
+
