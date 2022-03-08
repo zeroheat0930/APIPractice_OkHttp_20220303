@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.zeroheat.apipractice_okhttp_20220303.databinding.ActivityViewTopicDetailBinding
+import com.zeroheat.apipractice_okhttp_20220303.datas.ReplyData
 import com.zeroheat.apipractice_okhttp_20220303.datas.TopicData
 import com.zeroheat.apipractice_okhttp_20220303.utils.ServerUtil
 import org.json.JSONObject
@@ -16,6 +17,9 @@ class VIewTopicDetailActivity : BaseActivity() {
 
 //    보여주게 될 토론 주제 데이터 > 이벤트처리, 데이터 표현 등 여러 함수에서 사용
     lateinit var mTopicData : TopicData
+
+    val mReplyList = ArrayList<ReplyData>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +55,10 @@ class VIewTopicDetailActivity : BaseActivity() {
         binding.btnVote2.setOnClickListener {
 
         ServerUtil.postRequestVote(mContext, mTopicData.sideList[1].id, object : ServerUtil.JsonResponseHandler {
-                override fun onResponse(jsonObj: JSONObject) {
+
+
+
+            override fun onResponse(jsonObj: JSONObject) {
 //                    토스트로, 서버가 알려준 현재 상황 (신규 투표 or 재투표 or 취소 등)
                     val message = jsonObj.getString("message")
 
@@ -136,6 +143,23 @@ class VIewTopicDetailActivity : BaseActivity() {
                 runOnUiThread {
                     setTopicDataToUi()
                 }
+
+//                topicObj 내부에는, replies라는 댓글 목록 JSONArray도 들어있다.
+//                mReplyList에 넣어주자.
+
+                val repliesArr = topicObj.getJSONArray("replies")
+
+                for (i in   0 until repliesArr.length()) {
+                    val replyObj =  repliesArr.getJSONObject(i)
+
+                    mReplyList.add(  ReplyData.getReplyDataFromJson(replyObj)  )
+
+                }
+
+//                서버의 동작이므로, 어댑터 세팅보다 늦게 끝날수 있다. (notifyDataSetChanged)
+
+
+
 
             }
 
