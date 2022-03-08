@@ -14,7 +14,6 @@ class LoginActivity : BaseActivity() {
 
     lateinit var binding: ActivityLoginBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_login)
@@ -44,8 +43,6 @@ class LoginActivity : BaseActivity() {
             startActivity(myIntent)
         }
 
-
-
         binding.btnLogin.setOnClickListener {
 
 //            id / pw 추출
@@ -61,7 +58,8 @@ class LoginActivity : BaseActivity() {
 //                    서버에 다녀오고 실행 : 라이브러리가 자동으로 백그라운드에서 돌도록 만든 코드
 
                 val code = jsonObj.getInt("code")
-                    if(code == 200) {
+
+                if(code == 200) {
 
 //                        로그인 한 사람의 닉네임을 추출, "~~님, 환영합니다!" 로 토스트.
 

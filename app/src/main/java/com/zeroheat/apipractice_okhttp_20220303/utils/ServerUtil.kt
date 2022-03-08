@@ -73,7 +73,7 @@ class ServerUtil {
                 override fun onResponse(call: Call, response: Response) {
 
 //                    어떤 내용이던, 응답 자체는 잘 돌아온 경우. (그 내용은 성공/실패 일 수 있다.)
-//
+
 //                    응답 : response 변수 > 응답의 본문 (body)만 보자.
 
                     val bodyString = response.body!!.string() // toString()아님!, string() 기능은 1회용. 변수에 담아두고 있음
