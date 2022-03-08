@@ -11,6 +11,9 @@ class TopicData : Serializable {
     var replyCount = 0
 
 
+//    하나의 토론주제 : 여러개의 (목록) 선택진영
+     val sideList = ArrayList<SideData>()
+
     companion object {
 
 //    주제 정보를 담고 있는 JSONObject가 들어오면 > TopicData형태로 변환해주는 함수. => static 메쏘드
@@ -38,7 +41,10 @@ class TopicData : Serializable {
                 val sideObj = sidesArr.getJSONObject(i)
 
 //                sideObj도, SideData 로 (선택 진영) 변환.
+                val sideData = SideData.getSideDataFromJson(sideObj)
 
+//                topicData변수의 하위 목록으로 등록.
+                topicData.sideList.add(sideData)
             }
 
 
