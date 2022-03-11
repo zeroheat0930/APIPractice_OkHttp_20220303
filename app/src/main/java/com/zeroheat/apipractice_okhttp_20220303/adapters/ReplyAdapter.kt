@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import com.zeroheat.apipractice_okhttp_20220303.R
 import com.zeroheat.apipractice_okhttp_20220303.VIewTopicDetailActivity
 import com.zeroheat.apipractice_okhttp_20220303.datas.ReplyData
@@ -97,7 +98,34 @@ class ReplyAdapter(
             )
 
         }
+        txtHateCount.setOnClickListener {
 
+//            서버에 이댓글에 싫어요 알림.
+            ServerUtil.postRequestReplyLikeOrHate(
+                mContext,
+                data.id,
+                false,
+                object : ServerUtil.JsonResponseHandler{
+                    override fun onResponse(jsonObj: JSONObject) {
+                        (mContext as VIewTopicDetailActivity).getTopicDetailFromServer()
+                    }
+                }
+            )
+
+        }
+
+//        좋아요가 눌렸는지, 아닌지. 글씨 색상 변경
+        if(data.isMyLike){
+            txtLikeCount.setTextColor(ContextCompat.getColor(mContext, R.color.naver_red))
+        }else{
+            txtLikeCount.setTextColor(ContextCompat.getColor(mContext, R.color.deep_dark_gray))
+        }
+
+        if(data.isMyHate){
+            txtLikeCount.setTextColor(ContextCompat.getColor(mContext, R.color.naver_blue))
+        }else{
+            txtLikeCount.setTextColor(ContextCompat.getColor(mContext, R.color.deep_dark_gray))
+        }
 
         return row
 
