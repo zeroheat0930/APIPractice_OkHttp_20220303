@@ -18,11 +18,12 @@ abstract class BaseActivity : AppCompatActivity() {
 
     lateinit var mContext: Context
 
-//    액티비티의 생명주기를 가지고 있다. => onCreate 오버라이딩 가능.
+//    액션바의 UI 변수를 멤버변수로 > 상속 가능
 //    => 변수에 대입 : 커스텀 액션바 세팅 뒤에
 
     lateinit var btnBack : ImageView
 
+//    액티비티의 생명주기를 가지고 있다. => onCreate 오버라이딩 가능.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
