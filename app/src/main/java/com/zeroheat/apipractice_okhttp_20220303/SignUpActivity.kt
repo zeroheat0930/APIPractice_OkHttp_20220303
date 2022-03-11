@@ -18,7 +18,6 @@ class SignUpActivity : BaseActivity() {
       binding =  DataBindingUtil.setContentView(this,R.layout.activity_sign_up)
         setValues()
         setupEvents()
-        setCustomActionBar()
     }
 
 

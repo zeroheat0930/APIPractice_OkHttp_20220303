@@ -1,5 +1,6 @@
 package com.zeroheat.apipractice_okhttp_20220303
 
+import android.os.Bundle
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -14,6 +15,17 @@ abstract class BaseActivity : AppCompatActivity() {
 //    미리 mContext 변수에, 화면의 this를 담아두고 => 모든 액티비티에 상속으로 물려주자.
 
     val mContext = this
+
+//    액티비티의 생명주기를 가지고 있다. => onCreate 오버라이딩 가능.
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if(supportActionBar != null){
+            setCustomActionBar()
+        }
+
+    }
 
 
 

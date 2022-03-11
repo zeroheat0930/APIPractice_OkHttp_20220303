@@ -19,7 +19,6 @@ class LoginActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_login)
         setupEvents()
         setValues()
-        setCustomActionBar()
     }
 
     override fun setupEvents(){

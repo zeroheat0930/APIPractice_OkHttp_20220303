@@ -32,7 +32,6 @@ class VIewTopicDetailActivity : BaseActivity() {
         mTopicData = intent.getSerializableExtra("topic") as TopicData
         setupEvents()
         setValues()
-        setCustomActionBar()
     }
     override fun setupEvents() {
 
