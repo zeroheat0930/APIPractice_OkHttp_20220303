@@ -2,6 +2,7 @@ package com.zeroheat.apipractice_okhttp_20220303
 
 import android.content.Context
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -18,6 +19,9 @@ abstract class BaseActivity : AppCompatActivity() {
     lateinit var mContext: Context
 
 //    액티비티의 생명주기를 가지고 있다. => onCreate 오버라이딩 가능.
+//    => 변수에 대입 : 커스텀 액션바 세팅 뒤에
+
+    lateinit var btnBack : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,5 +60,12 @@ abstract class BaseActivity : AppCompatActivity() {
         val toolbar = defaultActionBar.customView.parent as Toolbar
         toolbar.setContentInsetsAbsolute(0,0)
 
+//        xml에 그려둔 UI 가져오기
+        btnBack = defaultActionBar.customView.findViewById(R.id.btnBack)
+
+//        누르면 화면 종료 : 모든 화면 공통
+        btnBack.setOnClickListener {
+            finish()
+        }
     }
 }
