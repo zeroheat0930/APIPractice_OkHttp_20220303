@@ -122,9 +122,9 @@ class ReplyAdapter(
         }
 
         if(data.isMyHate){
-            txtLikeCount.setTextColor(ContextCompat.getColor(mContext, R.color.naver_blue))
+            txtHateCount.setTextColor(ContextCompat.getColor(mContext, R.color.naver_blue))
         }else{
-            txtLikeCount.setTextColor(ContextCompat.getColor(mContext, R.color.deep_dark_gray))
+            txtHateCount.setTextColor(ContextCompat.getColor(mContext, R.color.deep_dark_gray))
         }
 
         return row
